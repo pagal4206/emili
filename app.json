@@ -2,13 +2,16 @@
   "name": "Emilia Robot",
   "description": "Telegram Bot deployment settings",
   "logo": "https://pic-bstarstatic.akamaized.net/ugc/9e98b6c8872450f3e8b19e0d0aca02deff02981f.jpg@1200w_630h_1e_1c_1f.webp",
-  "keywords": [
-    "telegram",
-    "bot",
-    "python"
-  ],
+  "keywords": ["telegram", "bot", "python"],
   "repository": "https://github.com/teamsuraj2/HB",
   "stack": "container",
+
+  "addons": [
+    {
+      "plan": "heroku-redis:mini",
+      "as": "REDIS"
+    }
+  ],
 
   "env": {
     "API_ID": {
@@ -29,6 +32,7 @@
       "description": "Your Bot ID",
       "required": true
     },
+
     "BOT_USERNAME": {
       "description": "Your Bot Username (without @)",
       "required": true
@@ -39,24 +43,13 @@
       "required": true
     },
 
-    "SUPPORT_CHAT": {
-      "description": "Support Chat Username",
-      "value": "",
-      "required": false
-    },
-    "UPDATE_CHANNEL": {
-      "description": "Update Channel Username",
-      "value": "",
-      "required": false
-    },
-    "START_PIC": {
-      "description": "Start Image URL",
-      "value": "https://pic-bstarstatic.akamaized.net/ugc/9e98b6c8872450f3e8b19e0d0aca02deff02981f.jpg@1200w_630h_1e_1c_1f.webp",
-      "required": false
+    "OWNER_ID": {
+      "description": "Bot Owner User ID",
+      "required": true
     },
 
     "DEV_USERS": {
-      "description": "List of Dev Users (Comma separated IDs)",
+      "description": "Comma separated Telegram user IDs",
       "value": "",
       "required": false
     },
@@ -67,27 +60,28 @@
       "required": false
     },
 
-    "REDIS_URL": {
-      "description": "Redis URL (redis://localhost:6379)",
-      "value": "",
-      "required": false
-    },
-    "REDIS_PASSWORD": {
-      "description": "Redis Password",
-      "value": "",
-      "required": false
-    },
-
     "EVENT_LOGS": {
       "description": "Event Logs Chat ID",
       "value": "",
       "required": false
     },
 
-    "OWNER_ID": {
-      "description": "Bot Owner User ID",
+    "SUPPORT_CHAT": {
+      "description": "Support Chat Username",
       "value": "",
-      "required": true
+      "required": false
+    },
+
+    "UPDATE_CHANNEL": {
+      "description": "Update Channel Username",
+      "value": "",
+      "required": false
+    },
+
+    "START_PIC": {
+      "description": "Start Image URL",
+      "value": "https://pic-bstarstatic.akamaized.net/ugc/9e98b6c8872450f3e8b19e0d0aca02deff02981f.jpg@1200w_630h_1e_1c_1f.webp",
+      "required": false
     },
 
     "TEMP_DOWNLOAD_DIRECTORY": {
