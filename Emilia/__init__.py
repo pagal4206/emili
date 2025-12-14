@@ -156,17 +156,15 @@ pyro_plugins = dict(root="Emilia/pyro")
 mongo = motor_asyncio.AsyncIOMotorClient(MONGO_DB_URL, minPoolSize=10, maxPoolSize=100)
 db = mongo["Emilia"]
 
+from redis.asyncio.connection import SSLConnection
 import redis.asyncio as redis
 import ssl
 
-ssl_context = ssl.create_default_context()
-ssl_context.check_hostname = False
-ssl_context.verify_mode = ssl.CERT_NONE
-
-redis_client = redis.from_url(
+redis_client = redis.Redis.from_url(
     Config.REDIS_URL,
     decode_responses=True,
-    ssl=ssl_context
+    connection_class=SSLConnection,
+    ssl_cert_reqs=ssl.CERT_NONE
 )
 
 db.redis_client = redis_client
